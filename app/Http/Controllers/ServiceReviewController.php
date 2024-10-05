@@ -17,7 +17,7 @@ class ServiceReviewController extends Controller
         try {
             $reviews =  ServiceReview::where('service_id', $service_id)->get();
             return $this->success("All Reviews Retrieved", [
-                'data' => $reviews
+                'data' => $reviews->load('customer')
             ], 200);
         } catch (ModelNotFoundException $e) {
             $this->error(message: "Service not found", statusCode: 500);

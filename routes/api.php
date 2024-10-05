@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\HomeController;
@@ -110,4 +111,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/product/{product_id}/reviews', [ProductReviewController::class, 'store']);
     //delete product review
     Route::delete('/product/{product_id}/reviews/{review_id}', [ProductReviewController::class, 'destroy']);
+
+
+    Route::get('/cart/{user_id}', [CartController::class, 'index']);
+    Route::post('/cart/{user_id}', [CartController::class, 'store']);
 });
